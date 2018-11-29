@@ -241,7 +241,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.support_one_handed_mode=true
 
 # Override BQR mask to enable LE Audio Choppy report, remove BTRT logging
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.bluetooth.bqr.event_mask=295006 \
     persist.bluetooth.bqr.vnd_quality_mask=29 \
@@ -362,7 +362,7 @@ PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.udfps.auto_exposure_compensation_supported=true
 
 # Fingerprint Auth Filter
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.udfps.auth_filter.log_all_coverages=true \
     persist.vendor.udfps.auth_filter.data_collection_enabled=false

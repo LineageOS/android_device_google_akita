@@ -13,7 +13,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SOONG_NAMESPACES += \
     device/google/akita/location/gnssd
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
     PRODUCT_COPY_FILES += \
         device/google/akita/location/gnssd/release/gps.cfg:vendor/etc/gnss/gps.cfg
     PRODUCT_VENDOR_PROPERTIES += \
