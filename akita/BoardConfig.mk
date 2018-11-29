@@ -43,7 +43,7 @@ include device/google/zuma/BoardConfig-common.mk
 include device/google/akita/sepolicy/akita-sepolicy.mk
 include device/google/akita/wifi/BoardConfig-wifi.mk
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 -include device/google/common/etm/5_15/BoardUserdebugModules.mk
 endif
 
