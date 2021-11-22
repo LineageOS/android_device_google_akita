@@ -17,7 +17,8 @@
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/aosp_akita.mk \
     $(LOCAL_DIR)/aosp_akita_fullmte.mk \
-    $(LOCAL_DIR)/factory_akita.mk
+    $(LOCAL_DIR)/factory_akita.mk \
+    $(LOCAL_DIR)/lineage_akita.mk
 
 COMMON_LUNCH_CHOICES := \
     aosp_akita-trunk_staging-userdebug
