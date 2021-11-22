@@ -45,3 +45,5 @@ include device/google/zuma/BoardConfig-common.mk
 -include vendor/google_devices/akita/proprietary/BoardConfigVendor.mk
 include device/google/akita/sepolicy/akita-sepolicy.mk
 include device/google/akita/wifi/BoardConfig-wifi.mk
+
+include device/google/akita/akita/BoardConfigLineage.mk
