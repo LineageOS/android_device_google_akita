@@ -48,4 +48,5 @@ ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 endif
 
 DEVICE_PATH := device/google/akita
+VENDOR_PATH := vendor/google/akita
 include $(DEVICE_PATH)/$(TARGET_BOOTLOADER_BOARD_NAME)/BoardConfigLineage.mk
