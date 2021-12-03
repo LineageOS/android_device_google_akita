@@ -28,3 +28,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="akita-user 14 AP2A.240605.024 11860263 release-keys"
 
 BUILD_FINGERPRINT := google/akita/akita:14/AP2A.240605.024/11860263:user/release-keys
+
+$(call inherit-product, vendor/google/akita/akita-vendor.mk)
