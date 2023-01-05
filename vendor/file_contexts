@@ -4,3 +4,14 @@
 /dev/ttySAC18                       u:object_r:hci_attach_dev:s0
 /dev/logbuffer_btlpm                u:object_r:logbuffer_device:s0
 /dev/logbuffer_tty18                u:object_r:logbuffer_device:s0
+
+# GPS
+/dev/gnss_ipc                  u:object_r:vendor_gnss_device:s0
+/dev/gnss_boot                 u:object_r:vendor_gnss_device:s0
+/dev/gnss_dump                 u:object_r:vendor_gnss_device:s0
+
+/vendor/bin/hw/gnssd            u:object_r:gnssd_exec:s0
+/vendor/bin/hw/sctd             u:object_r:sctd_exec:s0
+/vendor/bin/hw/swcnd            u:object_r:swcnd_exec:s0
+/vendor/bin/hw/spad             u:object_r:spad_exec:s0
+/vendor/bin/hw/gnss-aidl-service_IGnssV2_ISlsiGnssV1           u:object_r:hal_gnss_default_exec:s0
