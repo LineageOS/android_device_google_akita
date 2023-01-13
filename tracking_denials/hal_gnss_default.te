@@ -1,0 +1,4 @@
+# b/265391808
+userdebug_or_eng(`
+  permissive hal_gnss_default;
+')
