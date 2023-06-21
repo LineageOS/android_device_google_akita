@@ -1,0 +1,3 @@
+system_suspend sysfs_batteryinfo dir b/288049074
+system_suspend sysfs_wlc dir b/288049074
+vendor_init default_prop property_service b/288049372
