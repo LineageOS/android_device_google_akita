@@ -7,5 +7,4 @@ gnssd sysfs_soc file b/288983920
 gnssd vendor_default_prop property_service b/288983920
 hal_gnss_default fwk_sensor_service service_manager b/288984267
 hal_gnss_default gnssd unix_stream_socket b/288984267
-system_suspend sysfs dir b/288984031
 vendor_init default_prop property_service b/288049372
