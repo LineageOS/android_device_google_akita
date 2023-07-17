@@ -1,0 +1,2 @@
+allow hal_gnss_default fwk_sensor_service:service_manager find;
+allow hal_gnss_default gnssd:unix_stream_socket connectto;
