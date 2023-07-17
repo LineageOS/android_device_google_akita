@@ -19,3 +19,8 @@ wakelock_use(gnssd)
 
 # Allow a base set of permissions required for network access.
 net_domain(gnssd);
+
+# Allow gnssd to get boot complete
+get_prop(gnssd, bootanim_system_prop)
+
+allow gnssd sysfs_soc:file r_file_perms;
