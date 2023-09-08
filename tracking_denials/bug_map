@@ -7,6 +7,7 @@ gnssd sysfs_soc file b/288983920
 gnssd vendor_default_prop property_service b/288983920
 hal_gnss_default fwk_sensor_service service_manager b/288984267
 hal_gnss_default gnssd unix_stream_socket b/288984267
+pixelstats_vendor sysfs file b/299553682
 platform_app bootanim_system_prop property_service b/289856465
 system_server sysfs_batteryinfo file b/294967729
 system_suspend sysfs_batteryinfo dir b/289856364
