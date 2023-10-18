@@ -1,7 +1,5 @@
 # Camera vendor property
 set_prop(vendor_init, vendor_camera_debug_prop)
 
-userdebug_or_eng(`
-  # gps vendor property
-  set_prop(vendor_init, vendor_gps_prop)
-')
+# gps vendor property
+set_prop(vendor_init, vendor_gps_prop)
