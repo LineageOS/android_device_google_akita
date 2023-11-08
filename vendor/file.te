@@ -1,2 +1,3 @@
 type sysfs_modem_state, sysfs_type, fs_type;
 type sysfs_gps, sysfs_type, fs_type;
+type proc_percpu_pagelist_high_fraction, fs_type, proc_type;

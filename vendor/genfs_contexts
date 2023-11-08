@@ -66,3 +66,6 @@ genfscon sysfs /devices/platform/gnssif/coredump                                
 
 # modem state
 genfscon sysfs /devices/platform/cpif/modem_state       u:object_r:sysfs_modem_state:s0
+
+# PCP knob
+genfscon proc /sys/vm/percpu_pagelist_high_fraction u:object_r:proc_percpu_pagelist_high_fraction:s0
