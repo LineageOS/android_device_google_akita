@@ -3,6 +3,3 @@ set_prop(vendor_init, vendor_camera_debug_prop)
 
 # gps vendor property
 set_prop(vendor_init, vendor_gps_prop)
-
-# PCP knob
-allow vendor_init proc_percpu_pagelist_high_fraction:file w_file_perms;
