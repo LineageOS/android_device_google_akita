@@ -60,6 +60,9 @@ genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-7/7-0025/power_supply/tcpm-s
 # genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-8/8-0025/power_supply/tcpm-source-psy-8-0025/wakeup            u:object_r:sysfs_wakeup:s0
 genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-9/9-0025/power_supply/tcpm-source-psy-9-0025/wakeup              u:object_r:sysfs_wakeup:s0
 
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-7/7-0036/wakeup                                                  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-7/7-0069/wakeup                                                  u:object_r:sysfs_wakeup:s0
+
 genfscon sysfs /devices/platform/gnssif/wakeup                                                                       u:object_r:sysfs_wakeup:s0
 # gps coredump node
 genfscon sysfs /devices/platform/gnssif/coredump                                                                     u:object_r:sysfs_gps:s0
