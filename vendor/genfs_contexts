@@ -55,6 +55,3 @@ genfscon sysfs /devices/platform/gnssif/wakeup                                  
 
 # gps coredump node
 genfscon sysfs /devices/platform/gnssif/coredump                                                                     u:object_r:sysfs_gps:s0
-
-# modem state
-genfscon sysfs /devices/platform/cpif/modem_state       u:object_r:sysfs_modem_state:s0
