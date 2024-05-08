@@ -7,3 +7,6 @@ allow hal_gnss_default sysfs_gps:file rw_file_perms;
 
 #Read GPS property
 get_prop(hal_gnss_default, vendor_gps_prop)
+
+# Binder call to pixel-gnss
+binder_call(hal_gnss_default, hal_gnss_pixel)
