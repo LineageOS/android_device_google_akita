@@ -25,3 +25,6 @@ get_prop(gnssd, bootanim_system_prop)
 
 allow gnssd sysfs_soc:file r_file_perms;
 allow gnssd sysfs_gps:file rw_file_perms;
+
+# Read modme state
+allow gnssd sysfs_modem_state:file r_file_perms;
