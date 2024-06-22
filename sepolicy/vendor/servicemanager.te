@@ -1,0 +1,2 @@
+binder_call(servicemanager, hal_gnss_pixel)
+binder_call(servicemanager, hal_gnss_default)
