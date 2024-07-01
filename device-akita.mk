@@ -14,8 +14,7 @@
 # limitations under the License.
 #
 
-PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard vendor/google_devices/release/phones/pixel_2024/release_config_map.mk)
-
+PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard vendor/google_devices/release/phones/pixel_2024_midyear/release_config_map.textproto)
 
 ifdef RELEASE_KERNEL_AKITA_VERSION
 TARGET_LINUX_KERNEL_VERSION := $(RELEASE_KERNEL_AKITA_VERSION)
@@ -28,6 +27,12 @@ TARGET_BOARD_KERNEL_HEADERS ?= $(RELEASE_KERNEL_AKITA_DIR)/kernel-headers
 else
 TARGET_KERNEL_DIR ?= device/google/akita-kernels/5.15/trunk
 TARGET_BOARD_KERNEL_HEADERS ?= device/google/akita-kernels/5.15/trunk/kernel-headers
+endif
+
+ifeq ($(PRODUCT_BOOTS_16K),true)
+TARGET_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
+TARGET_KERNEL_DIR := $(RELEASE_KERNEL_AKITA_DIR)/16kb
+TARGET_RW_FILE_SYSTEM_TYPE := ext4
 endif
 
 $(call inherit-product-if-exists, vendor/google_devices/akita/prebuilts/device-vendor-akita.mk)
@@ -236,7 +241,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # LE Audio Unicast Allowlist
 PRODUCT_PRODUCT_PROPERTIES += \
-    persist.bluetooth.leaudio.allow_list=SM-R510
+    persist.bluetooth.leaudio.allow_list=SM-R510,WF-1000XM5
 
 # Support LE & Classic concurrent encryption (b/330704060)
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -371,8 +376,8 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Vibrator HAL
 $(call soong_config_set,haptics,kernel_ver,v$(subst .,_,$(TARGET_LINUX_KERNEL_VERSION)))
 ADAPTIVE_HAPTICS_FEATURE := adaptive_haptics_v1
+ACTUATOR_MODEL := legacy_zlra_actuator
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.vibrator.hal.supported_primitives=243 \
     ro.vendor.vibrator.hal.f0.comp.enabled=1 \
     ro.vendor.vibrator.hal.redc.comp.enabled=0 \
 	persist.vendor.vibrator.hal.context.enable=false \
@@ -383,7 +388,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Increment the SVN for any official public releases
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.build.svn=10
+    ro.vendor.build.svn=15
 
 # Keyboard height ratio and bottom padding in dp for portrait mode
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -405,3 +410,5 @@ PRODUCT_SYSTEM_PROPERTIES += \
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 $(call inherit-product-if-exists, device/google/common/etm/device-userdebug-modules.mk)
 endif
+
+PRODUCT_NO_BIONIC_PAGE_SIZE_MACRO := true
