@@ -29,10 +29,8 @@ TARGET_KERNEL_DIR ?= device/google/akita-kernels/5.15/trunk
 TARGET_BOARD_KERNEL_HEADERS ?= device/google/akita-kernels/5.15/trunk/kernel-headers
 endif
 
-ifeq ($(PRODUCT_BOOTS_16K),true)
-TARGET_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
-TARGET_KERNEL_DIR := $(RELEASE_KERNEL_AKITA_DIR)/16kb
-TARGET_RW_FILE_SYSTEM_TYPE := ext4
+ifneq ($(TARGET_BOOTS_16K),true)
+PRODUCT_16K_DEVELOPER_OPTION := $(RELEASE_GOOGLE_AKITA_16K_DEVELOPER_OPTION)
 endif
 
 $(call inherit-product-if-exists, vendor/google_devices/akita/prebuilts/device-vendor-akita.mk)
@@ -353,6 +351,8 @@ endif
 # Display
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.display.lbe.supported=1
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.set_idle_timer_ms=1500
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.vendor.primarydisplay.google-ak3b.temperature_path=/dev/thermal/tz-by-name/display_therm/temp
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.vendor.display.read_temp_interval=30
 
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.udfps.als_feed_forward_supported=true \
@@ -386,9 +386,39 @@ PRODUCT_VENDOR_PROPERTIES += \
 	persist.vendor.vibrator.hal.context.cooldowntime=1600 \
 	persist.vendor.vibrator.hal.context.settlingtime=5000
 
-# Increment the SVN for any official public releases
+# Override Output Distortion Gain
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.build.svn=15
+    vendor.audio.hapticgenerator.distortion.output.gain=0.29
+
+# Increment the SVN for any official public releases
+ifdef RELEASE_SVN_AKITA
+TARGET_SVN ?= $(RELEASE_SVN_AKITA)
+else
+# Set this for older releases that don't use build flag
+TARGET_SVN ?= 21
+endif
+
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.build.svn=$(TARGET_SVN)
+
+# Set device family property for SMR
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.device_family=HK3SB3AK3
+
+# Set build properties for SMR builds
+ifeq ($(RELEASE_IS_SMR), true)
+    ifneq (,$(RELEASE_BASE_OS_AKITA))
+        PRODUCT_BASE_OS := $(RELEASE_BASE_OS_AKITA)
+    endif
+endif
+
+# Set build properties for EMR builds
+ifeq ($(RELEASE_IS_EMR), true)
+    ifneq (,$(RELEASE_BASE_OS_AKITA))
+        PRODUCT_PROPERTY_OVERRIDES += \
+        ro.build.version.emergency_base_os=$(RELEASE_BASE_OS_AKITA)
+    endif
+endif
 
 # Keyboard height ratio and bottom padding in dp for portrait mode
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -412,3 +442,8 @@ $(call inherit-product-if-exists, device/google/common/etm/device-userdebug-modu
 endif
 
 PRODUCT_NO_BIONIC_PAGE_SIZE_MACRO := true
+PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := true
+
+# Bluetooth device id
+PRODUCT_PRODUCT_PROPERTIES += \
+    bluetooth.device_id.product_id=20495
