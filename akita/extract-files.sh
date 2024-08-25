@@ -106,8 +106,6 @@ if [ -z "${ONLY_FIRMWARE}" ]; then
     VENDOR_TXT="${MY_DIR}/proprietary-files-vendor.txt"
     generate_prop_list_from_image "vendor.img" "${VENDOR_TXT}" VENDOR_SKIP_FILES
 
-    set_as_module "vendor/lib64/libOpenCL.so" "${VENDOR_TXT}"
-
     # libExynosC2*Dec & libExynosC2*Enc depend on libacryl & libexynosv4l2, which are gnu makefile targets
     set_disable_checkelf "vendor/lib64/libExynosC2H263Dec.so" "${VENDOR_TXT}"
     set_disable_checkelf "vendor/lib64/libExynosC2H263Enc.so" "${VENDOR_TXT}"
