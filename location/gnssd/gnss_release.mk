@@ -1,6 +1,8 @@
 # Enable pixel gnss hal service
 -include vendor/google/gnss/aidl_service/pixel_gnss_hal.mk
 
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/akita/location/gnssd/device_framework_matrix_product.xml
+
 PRODUCT_PACKAGES += \
     gnssd \
     android.hardware.gnss-service \
