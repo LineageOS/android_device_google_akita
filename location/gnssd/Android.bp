@@ -20,16 +20,19 @@ cc_prebuilt_binary {
         arm64: {
             srcs: ["release/android.hardware.gnss-service"],
             shared_libs: [
+                "libbase",
+                "libbinder_ndk",
+                "libcutils",
                 "liblog",
                 "libutils",
-                "libhardware",
-                "libhidlbase",
+                "android.frameworks.sensorservice-V1-ndk",
                 "android.hardware.gnss-V3-ndk",
                 "libsensorndkbridge",
                 "libc++",
                 "libc",
                 "libm",
                 "libdl",
+                "libz",
             ],
         },
     },
@@ -39,9 +42,6 @@ cc_prebuilt_binary {
     strip: {
         none: true,
     },
-    // Bypass because libhidltransport is deprecated
-    // Bypass because libhwbinder is deprecated
-    check_elf_files: false,
     product_variables: {
         debuggable: {
             required: [
@@ -61,20 +61,15 @@ cc_prebuilt_binary {
             srcs: ["release/gnssd"],
             shared_libs: [
                 "liblog",
-                "libutils",
-                "libhardware_legacy",
-                "libcutils",
                 "libssl",
                 "libcrypto",
-                // "libsitril-gps",
-                "android.frameworks.sensorservice@1.0",
-                "libhidlbase",
                 "libandroid_net",
                 "libc++",
                 "libc",
                 "libm",
                 "libdl",
                 "libcurl",
+                "libz",
             ],
         },
     },
@@ -84,8 +79,6 @@ cc_prebuilt_binary {
     strip: {
         none: true,
     },
-    // Bypass because libsitril-gps is Android.mk module
-    check_elf_files: false,
     product_variables: {
         debuggable: {
             required: [
