@@ -1,0 +1,57 @@
+# Haptics
+genfscon sysfs /devices/platform/10c80000.hsi2c/i2c-0/0-0043            u:object_r:sysfs_vibrator:s0
+
+# WLC
+genfscon sysfs /devices/platform/10c90000.hsi2c/i2c-9/9-0061                            u:object_r:sysfs_wlc:s0
+genfscon sysfs /devices/platform/10c90000.hsi2c/i2c-9/9-0061/power_supply               u:object_r:sysfs_batteryinfo:s0
+
+# System Suspend
+genfscon sysfs /devices/platform/10c90000.hsi2c/i2c-9/9-0061/power_supply/wireless/wakeup                            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10c90000.hsi2c/i2c-9/9-0061/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-0/0-0069/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-1/1-0069/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-2/2-0069/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-3/3-0069/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-4/4-0069/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-5/5-0069/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-6/6-0069/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-7/7-0069/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-8/8-0069/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-9/9-0069/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-10/10-0069/wakeup/wakeup                                         u:object_r:sysfs_wakeup:s0
+
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-0/0-0036/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-1/1-0036/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-2/2-0036/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-3/3-0036/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-4/4-0036/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-5/5-0036/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-6/6-0036/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-7/7-0036/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-8/8-0036/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-9/9-0036/wakeup/wakeup                                           u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-10/10-0036/wakeup/wakeup                                         u:object_r:sysfs_wakeup:s0
+
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-0/0-0025/power_supply/tcpm-source-psy-0-0025/wakeup              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-1/1-0025/power_supply/tcpm-source-psy-1-0025/wakeup              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-2/2-0025/power_supply/tcpm-source-psy-2-0025/wakeup              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-3/3-0025/power_supply/tcpm-source-psy-3-0025/wakeup              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-4/4-0025/power_supply/tcpm-source-psy-4-0025/wakeup              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-5/5-0025/power_supply/tcpm-source-psy-5-0025/wakeup              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-6/6-0025/power_supply/tcpm-source-psy-6-0025/wakeup              u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-7/7-0025/power_supply/tcpm-source-psy-7-0025/wakeup              u:object_r:sysfs_wakeup:s0
+# already in zuma-sepolicy/vendor/genfs_contexts
+# genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-8/8-0025/power_supply/tcpm-source-psy-8-0025/wakeup            u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-9/9-0025/power_supply/tcpm-source-psy-9-0025/wakeup              u:object_r:sysfs_wakeup:s0
+
+
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-7/7-0036/wakeup                                                  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-7/7-0069/wakeup                                                  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-7/7-0036/power_supply/maxfg/wakeup                               u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-7/7-0069/power_supply/dc/wakeup                                  u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/10cb0000.hsi2c/i2c-7/7-0069/power_supply/main-charger/wakeup                        u:object_r:sysfs_wakeup:s0
+genfscon sysfs /devices/platform/gnssif/wakeup                                                                       u:object_r:sysfs_wakeup:s0
+
+# gps coredump node
+genfscon sysfs /devices/platform/gnssif/coredump                                                                     u:object_r:sysfs_gps:s0
