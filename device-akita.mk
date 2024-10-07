@@ -14,20 +14,12 @@
 # limitations under the License.
 #
 
-PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard vendor/google_devices/release/phones/pixel_2024_midyear/release_config_map.textproto)
+PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard vendor/google_devices/release/phones/./pixel_2024_midyear/release_config_map.textproto)
 
-ifdef RELEASE_KERNEL_AKITA_VERSION
 TARGET_LINUX_KERNEL_VERSION := $(RELEASE_KERNEL_AKITA_VERSION)
-endif
-
-ifdef RELEASE_KERNEL_AKITA_DIR
 # Keeps flexibility for kasan and ufs builds
 TARGET_KERNEL_DIR ?= $(RELEASE_KERNEL_AKITA_DIR)
 TARGET_BOARD_KERNEL_HEADERS ?= $(RELEASE_KERNEL_AKITA_DIR)/kernel-headers
-else
-TARGET_KERNEL_DIR ?= device/google/akita-kernels/5.15/trunk
-TARGET_BOARD_KERNEL_HEADERS ?= device/google/akita-kernels/5.15/trunk/kernel-headers
-endif
 
 ifneq ($(TARGET_BOOTS_16K),true)
 PRODUCT_16K_DEVELOPER_OPTION := $(RELEASE_GOOGLE_AKITA_16K_DEVELOPER_OPTION)
@@ -42,11 +34,14 @@ $(call inherit-product-if-exists, vendor/google_devices/akita/proprietary/Wallpa
 
 DEVICE_PACKAGE_OVERLAYS += device/google/akita/akita/overlay
 
+ifeq ($(RELEASE_PIXEL_AIDL_AUDIO_HAL_ZUMA),true)
+USE_AUDIO_HAL_AIDL := true
+endif
+
 include device/google/akita/audio/akita/audio-tables.mk
 include device/google/zuma/device-shipping-common.mk
-include hardware/google/pixel/vibrator/cs40l26/device.mk
 include device/google/gs-common/bcmbt/bluetooth.mk
-include device/google/gs-common/touch/gti/gti.mk
+include device/google/gs-common/touch/gti/predump_gti.mk
 include device/google/gs-common/modem/radio_ext/radio_ext.mk
 
 # go/lyric-soong-variables
@@ -268,6 +263,12 @@ endif
 PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.server.automatic_turn_on=true
 
+ifeq ($(USE_AUDIO_HAL_AIDL),true)
+# AIDL
+
+else
+# HIDL
+
 # Spatial Audio
 PRODUCT_PACKAGES += \
 	libspatialaudio \
@@ -277,6 +278,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	android.hardware.audio.sounddose-vendor-impl \
 	audio_sounddose_aoc \
+
+endif
 
 # Audio CCA property
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -362,13 +365,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.udfps.auto_exposure_compensation_supported=true
 
-# Fingerprint Auth Filter
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
-PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.udfps.auth_filter.log_all_coverages=true \
-    persist.vendor.udfps.auth_filter.data_collection_enabled=false
-endif
-
 # OIS with system imu
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.camera.ois_with_system_imu=true
@@ -445,5 +441,6 @@ PRODUCT_NO_BIONIC_PAGE_SIZE_MACRO := true
 PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := true
 
 # Bluetooth device id
+# Akita: 0x410F
 PRODUCT_PRODUCT_PROPERTIES += \
-    bluetooth.device_id.product_id=20495
+    bluetooth.device_id.product_id=16655
