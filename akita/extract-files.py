@@ -92,6 +92,7 @@ module = ExtractUtilsModule(
     namespace_imports=namespace_imports,
     add_generated_carriersettings=True,
     add_firmware_proprietary_file=True,
+    add_factory_proprietary_file=True,
     extract_fns=extract_fns,
     check_elf=True,
 )
