@@ -1527,8 +1527,8 @@ vendor/lib64/audio_waves_aoc.so
 vendor/lib64/biometricsuez.so
 vendor/lib64/com.google.edgetpu.dba-V1-ndk.so
 vendor/lib64/com.google.edgetpu.tachyon-V1-ndk.so
-vendor/lib64/com.google.edgetpu_app_service-V4-ndk.so;MODULE_SUFFIX=-vendor
-vendor/lib64/com.google.edgetpu_vendor_service-V2-ndk.so;MODULE_SUFFIX=-vendor
+vendor/lib64/com.google.edgetpu_app_service-V4-ndk.so;MODULE_SUFFIX=_vendor
+vendor/lib64/com.google.edgetpu_vendor_service-V2-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/com.google.hardware.biometrics.fingerprint.fingerprint-ext-V1-ndk.so
 vendor/lib64/com.google.input-V2-ndk.so
 vendor/lib64/com.google.input-V3-ndk.so
@@ -1642,8 +1642,8 @@ vendor/lib64/vendor.google.battery_mitigation.service_static.so
 vendor/lib64/vendor.google.bluetooth_ext-V1-ndk.so
 vendor/lib64/vendor.google.google_battery-V3-ndk.so
 vendor/lib64/vendor.google.radio_ext-V1-ndk.so
-vendor/lib64/vendor.google.whitechapel.audio.audioext@4.0.so;MODULE_SUFFIX=-vendor
-vendor/lib64/vendor.google.whitechapel.audio.extension-V2-ndk.so;MODULE_SUFFIX=-vendor
+vendor/lib64/vendor.google.whitechapel.audio.audioext@4.0.so;MODULE_SUFFIX=_vendor
+vendor/lib64/vendor.google.whitechapel.audio.extension-V2-ndk.so;MODULE_SUFFIX=_vendor
 vendor/lib64/vendor.google.wireless_charger-V2-ndk.so
 vendor/lib64/vendor.google.wireless_charger.service-V1-ndk.so
 vendor/lib64/vendor.radio.base.so
