@@ -338,7 +338,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/akita/prebuilts
 
 # include GNSSD
-include device/google/akita/location/gnssd/device-gnss.mk
+include device/google/akita/location/device-gnss.mk
 
 # Set zram size
 PRODUCT_VENDOR_PROPERTIES += \
