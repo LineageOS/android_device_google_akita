@@ -234,7 +234,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # LE Audio Unicast Allowlist
 PRODUCT_PRODUCT_PROPERTIES += \
-    persist.bluetooth.leaudio.allow_list=SM-R510,WF-1000XM5
+    persist.bluetooth.leaudio.allow_list=SM-R510,WF-1000XM5,SM-R630
 
 # Support LE & Classic concurrent encryption (b/330704060)
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -280,6 +280,13 @@ PRODUCT_PACKAGES += \
 	audio_sounddose_aoc \
 
 endif
+
+# HdMic Audio
+PRODUCT_SOONG_NAMESPACES += device/google/akita/audio/akita/prebuilt/libspeechenhancer
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.app.audio.gsenet.version=1
+PRODUCT_PACKAGES += \
+    libspeechenhancer
 
 # Audio CCA property
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -331,7 +338,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/akita/prebuilts
 
 # include GNSSD
-include device/google/akita/location/gnssd/device-gnss.mk
+include device/google/akita/location/device-gnss.mk
 
 # Set zram size
 PRODUCT_VENDOR_PROPERTIES += \
@@ -444,3 +451,19 @@ PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := true
 # Akita: 0x410F
 PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.device_id.product_id=16655
+
+# Set support for LEA multicodec
+PRODUCT_PRODUCT_PROPERTIES += \
+    bluetooth.core.le_audio.codec_extension_aidl.enabled=true
+
+# LE Audio configuration scenarios
+PRODUCT_COPY_FILES += \
+    device/google/akita/bluetooth/audio_set_scenarios.json:$(TARGET_COPY_OUT_VENDOR)/etc/aidl/le_audio/aidl_audio_set_scenarios.json
+
+PRODUCT_COPY_FILES += \
+    device/google/akita/bluetooth/audio_set_configurations.json:$(TARGET_COPY_OUT_VENDOR)/etc/aidl/le_audio/aidl_audio_set_configurations.json
+
+# Enable APF by default
+PRODUCT_VENDOR_PROPERTIES += \
+    vendor.powerhal.apf_disabled=false \
+    vendor.powerhal.apf_enabled=true
