@@ -5,6 +5,9 @@ media.mediadrmservice.enable=true
 # Fingerprint
 ro.vendor.fingerprint.ta.name=g7a.app
 
+# GPS
+persist.vendor.gps.hal.service.name=vendor
+
 # Radio
 persist.vendor.ril.ecc.use.xml=1
 persist.vendor.ril.support_nr_ds=1
