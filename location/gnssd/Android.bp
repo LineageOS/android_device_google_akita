@@ -42,14 +42,9 @@ cc_prebuilt_binary {
     strip: {
         none: true,
     },
-    product_variables: {
-        debuggable: {
-            required: [
-                "libsighandler",
-            ],
-        },
-    },
-
+    required: [
+        "libsighandler",
+    ],
     init_rc: ["init.gnss.rc"],
     vintf_fragments: ["android.hardware.gnss@default.xml"],
 }
@@ -79,14 +74,8 @@ cc_prebuilt_binary {
     strip: {
         none: true,
     },
-    product_variables: {
-        debuggable: {
-            required: [
-                "libsighandler",
-            ],
-        },
-    },
     required: [
         "libcustomgnss",
+        "libsighandler",
     ],
 }

@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard vendor/google_devices/release/phones/pixel_2024_midyear/release_config_map.textproto)
+PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard vendor/google_devices/release/phones/./pixel_2024_midyear/release_config_map.textproto)
 
 TARGET_LINUX_KERNEL_VERSION := $(RELEASE_KERNEL_AKITA_VERSION)
 # Keeps flexibility for kasan and ufs builds
@@ -40,9 +40,8 @@ endif
 
 include device/google/akita/audio/akita/audio-tables.mk
 include device/google/zuma/device-shipping-common.mk
-include hardware/google/pixel/vibrator/cs40l26/device.mk
 include device/google/gs-common/bcmbt/bluetooth.mk
-include device/google/gs-common/touch/gti/gti.mk
+include device/google/gs-common/touch/gti/predump_gti.mk
 include device/google/gs-common/modem/radio_ext/radio_ext.mk
 
 # go/lyric-soong-variables
@@ -235,7 +234,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # LE Audio Unicast Allowlist
 PRODUCT_PRODUCT_PROPERTIES += \
-    persist.bluetooth.leaudio.allow_list=SM-R510,WF-1000XM5
+    persist.bluetooth.leaudio.allow_list=SM-R510,WF-1000XM5,SM-R630
 
 # Support LE & Classic concurrent encryption (b/330704060)
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -266,11 +265,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 ifeq ($(USE_AUDIO_HAL_AIDL),true)
 # AIDL
-
-# declare use of stereo spatialization
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.audio.stereo_spatialization_enabled=true \
-	ro.audio.spatializer_enabled=true
 
 else
 # HIDL
@@ -450,3 +444,19 @@ PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := true
 # Akita: 0x410F
 PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.device_id.product_id=16655
+
+# Set support for LEA multicodec
+PRODUCT_PRODUCT_PROPERTIES += \
+    bluetooth.core.le_audio.codec_extension_aidl.enabled=true
+
+# LE Audio configuration scenarios
+PRODUCT_COPY_FILES += \
+    device/google/akita/bluetooth/audio_set_scenarios.json:$(TARGET_COPY_OUT_VENDOR)/etc/aidl/le_audio/aidl_audio_set_scenarios.json
+
+PRODUCT_COPY_FILES += \
+    device/google/akita/bluetooth/audio_set_configurations.json:$(TARGET_COPY_OUT_VENDOR)/etc/aidl/le_audio/aidl_audio_set_configurations.json
+
+# Enable APF by default
+PRODUCT_VENDOR_PROPERTIES += \
+    vendor.powerhal.apf_disabled=false \
+    vendor.powerhal.apf_enabled=true
