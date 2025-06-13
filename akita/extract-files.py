@@ -28,8 +28,6 @@ from extract_utils.main import (
 namespace_imports = [
     'device/google/akita',
     'hardware/google/av',
-    'hardware/google/gchips',
-    'hardware/google/graphics/common',
     'hardware/google/interfaces',
     'hardware/google/pixel',
 ]
@@ -45,7 +43,7 @@ lib_fixups: lib_fixups_user_type = {
         'com.google.edgetpu_app_service-V4-ndk',
         'com.google.edgetpu_vendor_service-V2-ndk',
         'vendor.google.whitechapel.audio.audioext@4.0',
-        'vendor.google.whitechapel.audio.extension-V4-ndk',
+        'vendor.google.whitechapel.audio.extension-V5-ndk',
     ): lib_fixup_vendor_suffix,
 }
 
@@ -79,7 +77,7 @@ def fix_vendor_file_list(file_list: FileList):
         'vendor/lib64/com.google.edgetpu_app_service-V4-ndk.so',
         'vendor/lib64/com.google.edgetpu_vendor_service-V2-ndk.so',
         'vendor/lib64/vendor.google.whitechapel.audio.audioext@4.0.so',
-        'vendor/lib64/vendor.google.whitechapel.audio.extension-V4-ndk.so',
+        'vendor/lib64/vendor.google.whitechapel.audio.extension-V5-ndk.so',
     ]
 
     for file_path in module_suffix_file_paths:

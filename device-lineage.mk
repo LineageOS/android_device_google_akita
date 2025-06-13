@@ -24,13 +24,17 @@ include device/google/gs-common/wireless_charger/wireless_charger.mk
 
 # Build necessary packages for vendor
 
-# Codec2
+# Dumpstate
 PRODUCT_PACKAGES += \
-    libexynosv4l2
+    dump_gsc.sh
 
 # Fingerprint
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
+
+# GPS
+PRODUCT_PACKAGES += \
+    android.hardware.location.gps.prebuilt.xml
 
 # Graphics
 PRODUCT_PACKAGES += \
