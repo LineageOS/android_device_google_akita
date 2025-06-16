@@ -68,6 +68,9 @@
       <argument name="MCPS_TABLE" value="y" />
     </tuner>
     <tuner type="capture" name="gs_capture" />
+    <tuner name="gsenet">
+      <argument name="microphones" value="2" />
+    </tuner>
   </tuners>
 
   <latencies>
