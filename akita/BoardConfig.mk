@@ -44,10 +44,6 @@ include device/google/gs-common/check_current_prebuilt/check_current_prebuilt.mk
 include device/google/akita/sepolicy/akita-sepolicy.mk
 include device/google/akita/wifi/BoardConfig-wifi.mk
 
-ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
--include device/google/common/etm/5_15/BoardUserdebugModules.mk
-endif
-
 DEVICE_PATH := device/google/akita
 VENDOR_PATH := vendor/google/akita
 include $(DEVICE_PATH)/$(TARGET_BOOTLOADER_BOARD_NAME)/BoardConfigLineage.mk
