@@ -14,8 +14,6 @@
 # limitations under the License.
 #
 
-PRODUCT_RELEASE_CONFIG_MAPS += $(wildcard vendor/google_devices/release/phones/./pixel_2024_midyear/release_config_map.textproto)
-
 TARGET_LINUX_KERNEL_VERSION := $(RELEASE_KERNEL_AKITA_VERSION)
 # Keeps flexibility for kasan and ufs builds
 TARGET_KERNEL_DIR ?= $(RELEASE_KERNEL_AKITA_DIR)
@@ -24,13 +22,6 @@ TARGET_BOARD_KERNEL_HEADERS ?= $(RELEASE_KERNEL_AKITA_DIR)/kernel-headers
 ifneq ($(TARGET_BOOTS_16K),true)
 PRODUCT_16K_DEVELOPER_OPTION := $(RELEASE_GOOGLE_AKITA_16K_DEVELOPER_OPTION)
 endif
-
-$(call inherit-product-if-exists, vendor/google_devices/akita/prebuilts/device-vendor-akita.mk)
-$(call inherit-product-if-exists, vendor/google_devices/zuma/prebuilts/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/zuma/proprietary/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/akita/proprietary/akita/device-vendor-akita.mk)
-$(call inherit-product-if-exists, vendor/google_devices/akita/proprietary/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/google_devices/akita/proprietary/WallpapersAkita.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/google/akita/akita/overlay
 
@@ -311,9 +302,6 @@ PRODUCT_SOONG_NAMESPACES += \
 PRODUCT_PACKAGES += \
 	WifiOverlay2024Mid
 
-# Trusty liboemcrypto.so
-PRODUCT_SOONG_NAMESPACES += vendor/google_devices/akita/prebuilts
-
 # include GNSSD
 include device/google/akita/location/device-gnss.mk
 
@@ -325,11 +313,6 @@ PRODUCT_VENDOR_PROPERTIES += \
 # Increase thread priority for nodes stop
 PRODUCT_VENDOR_PROPERTIES += \
 	persist.vendor.camera.increase_thread_priority_nodes_stop=true
-
-# Fingerprint HAL
-GOODIX_CONFIG_BUILD_VERSION := g7_trusty
-$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_common.mk)
-$(call inherit-product-if-exists, vendor/goodix/udfps/configuration/udfps_shipping.mk)
 
 # Display
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.display.lbe.supported=1
