@@ -27,6 +27,3 @@ PRODUCT_DEVICE := akita
 PRODUCT_MODEL := AOSP on akita
 PRODUCT_BRAND := Android
 PRODUCT_MANUFACTURER := Google
-
-DEVICE_MANIFEST_FILE := \
-	device/google/akita/manifest.xml

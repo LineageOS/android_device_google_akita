@@ -281,6 +281,13 @@ PRODUCT_PACKAGES += \
 
 endif
 
+# HdMic Audio
+PRODUCT_SOONG_NAMESPACES += device/google/akita/audio/akita/prebuilt/libspeechenhancer
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.app.audio.gsenet.version=1
+PRODUCT_PACKAGES += \
+    libspeechenhancer
+
 # Audio CCA property
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.audio.cca.enabled=false
@@ -331,7 +338,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += vendor/google_devices/akita/prebuilts
 
 # include GNSSD
-include device/google/akita/location/gnssd/device-gnss.mk
+include device/google/akita/location/device-gnss.mk
 
 # Set zram size
 PRODUCT_VENDOR_PROPERTIES += \
