@@ -302,6 +302,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.vendor.display.read_temp_interval=30
 
 PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.udfps.als_feed_forward_supported=true \
+    persist.vendor.udfps.fps_touch_handler_supported=false \
     persist.vendor.udfps.lhbm_controlled_in_hal_supported=true
 
 # Fingerprint exposure compensation
