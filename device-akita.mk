@@ -15,7 +15,7 @@
 #
 
 TARGET_LINUX_KERNEL_VERSION := $(RELEASE_KERNEL_AKITA_VERSION)
-TARGET_KERNEL_DIR := device/google/akita-kernels/calyx
+TARGET_KERNEL_DIR := device/google/akita-kernels/$(TARGET_LINUX_KERNEL_VERSION)
 TARGET_BOARD_KERNEL_HEADERS := $(TARGET_KERNEL_DIR)/kernel-headers
 
 ifneq ($(TARGET_BOOTS_16K),true)
