@@ -14,9 +14,6 @@
 # limitations under the License.
 #
 
-USE_SWIFTSHADER := true
-BOARD_USES_SWIFTSHADER := true
-
 $(call inherit-product, device/google/zuma/aosp_common.mk)
 $(call inherit-product, device/google/akita/device-akita.mk)
 

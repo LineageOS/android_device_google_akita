@@ -26,13 +26,11 @@ BOARD_KERNEL_CMDLINE += samsung_iommu_v9.load_sequential=1
 TARGET_BOARD_INFO_FILE := device/google/akita/board-info.txt
 TARGET_BOOTLOADER_BOARD_NAME := akita
 TARGET_SCREEN_DENSITY := 420
-BOARD_USES_GENERIC_AUDIO := true
-USES_DEVICE_GOOGLE_AKITA := true
+
 BOARD_KERNEL_CMDLINE += swiotlb=noforce
 BOARD_KERNEL_CMDLINE += disable_dma32=on
 
 include device/google/zuma/BoardConfig-common.mk
-include device/google/gs-common/check_current_prebuilt/check_current_prebuilt.mk
 include device/google/akita/sepolicy/akita-sepolicy.mk
 include device/google/akita/wifi/BoardConfig-wifi.mk
 

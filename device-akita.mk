@@ -25,18 +25,11 @@ endif
 
 DEVICE_PACKAGE_OVERLAYS += device/google/akita/akita/overlay
 
-USE_AUDIO_HAL_AIDL := true
-
 include device/google/akita/audio/akita/audio-tables.mk
 include device/google/zuma/device-shipping-common.mk
 include device/google/gs-common/bcmbt/bluetooth.mk
 include device/google/gs-common/touch/gti/predump_gti.mk
 include device/google/gs-common/modem/radio_ext/radio_ext.mk
-
-# go/lyric-soong-variables
-$(call soong_config_set,lyric,camera_hardware,akita)
-$(call soong_config_set,lyric,tuning_product,akita)
-$(call soong_config_set,google3a_config,target_device,akita)
 
 # Init files
 PRODUCT_COPY_FILES += \
@@ -243,36 +236,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     SettingsAkitaOverlay
 
-# Keymaster HAL
-#LOCAL_KEYMASTER_PRODUCT_PACKAGE ?= android.hardware.keymaster@4.1-service
-
-# Gatekeeper HAL
-#LOCAL_GATEKEEPER_PRODUCT_PACKAGE ?= android.hardware.gatekeeper@1.0-service.software
-
-
-# Gatekeeper
-# PRODUCT_PACKAGES += \
-# 	android.hardware.gatekeeper@1.0-service.software
-
-# Keymint replaces Keymaster
-# PRODUCT_PACKAGES += \
-# 	android.hardware.security.keymint-service
-
-# Keymaster
-#PRODUCT_PACKAGES += \
-#	android.hardware.keymaster@4.0-impl \
-#	android.hardware.keymaster@4.0-service
-
-#PRODUCT_PACKAGES += android.hardware.keymaster@4.0-service.remote
-#PRODUCT_PACKAGES += android.hardware.keymaster@4.1-service.remote
-#LOCAL_KEYMASTER_PRODUCT_PACKAGE := android.hardware.keymaster@4.1-service
-#LOCAL_KEYMASTER_PRODUCT_PACKAGE ?= android.hardware.keymaster@4.1-service
-
-# PRODUCT_PROPERTY_OVERRIDES += \
-# 	ro.hardware.keystore_desede=true \
-# 	ro.hardware.keystore=software \
-# 	ro.hardware.gatekeeper=software
-
 # PowerStats HAL
 PRODUCT_SOONG_NAMESPACES += \
     device/google/akita/powerstats/akita
@@ -313,9 +276,6 @@ PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.camera.ois_with_system_imu=true
 
 # Vibrator HAL
-$(call soong_config_set,haptics,kernel_ver,v$(subst .,_,$(TARGET_LINUX_KERNEL_VERSION)))
-ADAPTIVE_HAPTICS_FEATURE := adaptive_haptics_v1
-ACTUATOR_MODEL := legacy_zlra_actuator
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.vibrator.hal.f0.comp.enabled=1 \
     ro.vendor.vibrator.hal.redc.comp.enabled=0 \
