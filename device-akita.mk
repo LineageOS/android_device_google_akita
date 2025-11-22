@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-TARGET_LINUX_KERNEL_VERSION := $(RELEASE_KERNEL_AKITA_VERSION)
+TARGET_LINUX_KERNEL_VERSION := 6.1
 TARGET_KERNEL_DEVICE := akita
 TARGET_KERNEL_DIR := device/google/$(TARGET_KERNEL_DEVICE)-kernels/$(TARGET_LINUX_KERNEL_VERSION)
 TARGET_KERNEL_PLATFORM_SOURCE := google/gs-$(TARGET_LINUX_KERNEL_VERSION)
@@ -103,7 +103,6 @@ PRODUCT_COPY_FILES += \
 	device/google/akita/nfc/libnfc-nci.conf:$(TARGET_COPY_OUT_PRODUCT)/etc/libnfc-nci.conf
 
 PRODUCT_PACKAGES += \
-	$(RELEASE_PACKAGE_NFC_STACK) \
 	Tag \
 	android.hardware.nfc-service.st \
 	NfcOverlayAkita
@@ -331,34 +330,12 @@ PRODUCT_VENDOR_PROPERTIES += \
     vendor.audio.hapticgenerator.distortion.output.gain=0.29
 
 # Increment the SVN for any official public releases
-ifdef RELEASE_SVN_AKITA
-TARGET_SVN ?= $(RELEASE_SVN_AKITA)
-else
-# Set this for older releases that don't use build flag
-TARGET_SVN ?= 21
-endif
-
 PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.build.svn=$(TARGET_SVN)
+    ro.vendor.build.svn=44
 
 # Set device family property for SMR
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.device_family=HK3SB3AK3
-
-# Set build properties for SMR builds
-ifeq ($(RELEASE_IS_SMR), true)
-    ifneq (,$(RELEASE_BASE_OS_AKITA))
-        PRODUCT_BASE_OS := $(RELEASE_BASE_OS_AKITA)
-    endif
-endif
-
-# Set build properties for EMR builds
-ifeq ($(RELEASE_IS_EMR), true)
-    ifneq (,$(RELEASE_BASE_OS_AKITA))
-        PRODUCT_PROPERTY_OVERRIDES += \
-        ro.build.version.emergency_base_os=$(RELEASE_BASE_OS_AKITA)
-    endif
-endif
 
 # Keyboard height ratio and bottom padding in dp for portrait mode
 PRODUCT_PRODUCT_PROPERTIES += \
