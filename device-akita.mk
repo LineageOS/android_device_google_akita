@@ -43,7 +43,7 @@ DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/modem/radio_
 
 # Recovery files
 PRODUCT_COPY_FILES += \
-        device/google/akita/conf/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.akita.rc
+    device/google/akita/recovery/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.akita.rc
 
 # Display
 PRODUCT_VENDOR_PROPERTIES += \
