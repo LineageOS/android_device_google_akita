@@ -31,13 +31,6 @@ PRODUCT_PACKAGES += \
 DEVICE_MANIFEST_FILE += device/google/gs-common/bcmbt/manifest_bluetooth.xml
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/bcmbt/compatibility_matrix.xml
 
-# Touch
-PRODUCT_PACKAGES += \
-    dump_touch.sh \
-    predump_gti0.sh \
-    predump_touch.sh \
-    touch_gti_ical
-
 # Radio extensions
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/modem/radio_ext/compatibility_matrix.xml
 
@@ -185,10 +178,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     SettingsAkitaOverlay
 
-# PowerStats HAL
-PRODUCT_SOONG_NAMESPACES += \
-    device/google/akita/powerstats/akita
-
 # WiFi Overlay
 PRODUCT_PACKAGES += \
 	WifiOverlay2024Mid
@@ -286,10 +275,6 @@ PRODUCT_PACKAGES += \
     libEGL_angle \
     libGLESv1_CM_angle \
     libGLESv2_angle
-
-# Dumpstate
-PRODUCT_PACKAGES += \
-    dump_gsc.sh
 
 # EUICC
 PRODUCT_COPY_FILES += \
