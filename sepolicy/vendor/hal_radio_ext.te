@@ -1,0 +1,12 @@
+type hal_radio_ext, domain;
+type hal_radio_ext_exec, exec_type, file_type, vendor_file_type;
+type hal_radio_ext_service, hal_service_type, protected_service, service_manager_type;
+
+add_service(hal_radio_ext, hal_radio_ext_service)
+
+binder_call(hal_radio_ext, servicemanager)
+
+init_daemon_domain(hal_radio_ext)
+
+allow hal_radio_ext sysfs_leds:dir search;
+allow hal_radio_ext sysfs_leds:file rw_file_perms;

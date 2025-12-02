@@ -1,0 +1,1 @@
+binder_call(hal_contexthub_default, hal_gnss_pixel)
