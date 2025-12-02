@@ -1,1 +1,1 @@
-type sysfs_gps, sysfs_type, fs_type;
+type sysfs_touch_gti, fs_type, sysfs_type;
