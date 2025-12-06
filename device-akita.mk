@@ -28,12 +28,6 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.prebuilt.xml \
     android.hardware.bluetooth_le.prebuilt.xml
 
-DEVICE_MANIFEST_FILE += device/google/gs-common/bcmbt/manifest_bluetooth.xml
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/bcmbt/compatibility_matrix.xml
-
-# Radio extensions
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/modem/radio_ext/compatibility_matrix.xml
-
 # Recovery files
 PRODUCT_COPY_FILES += \
     device/google/akita/recovery/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.akita.rc
@@ -182,10 +176,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	WifiOverlay2024Mid
 
-# include GNSSD
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += \
-    device/google/akita/location/device_framework_matrix_product.xml
-
 # Set zram size
 PRODUCT_VENDOR_PROPERTIES += \
 	vendor.zram.size=50p \
@@ -304,5 +294,6 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/$(DEVICE_CODENAME)/vendor.prop
 PRODUCT_PACKAGES += \
     sensors.dynamic_sensor_hal
 
-# Wireless charging
-DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += device/google/gs-common/wireless_charger/compatibility_matrix.xml
+# VINTF
+DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += \
+    $(DEVICE_PATH)/vintf/device_framework_matrix_product.xml
