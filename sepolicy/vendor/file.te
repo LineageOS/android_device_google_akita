@@ -1,2 +1,1 @@
-type sysfs_modem_state, fs_type, sysfs_type;
 type sysfs_touch_gti, fs_type, sysfs_type;
