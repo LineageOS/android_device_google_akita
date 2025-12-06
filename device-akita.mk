@@ -52,69 +52,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.ese.xml \
 	frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml
 
-# POF
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.bluetooth.finder.supported=true
-
-# Bluetooth AAC VBR
-PRODUCT_PRODUCT_PROPERTIES += \
-    persist.bluetooth.a2dp_aac.vbr_supported=true
-
-# Bluetooth Super Wide Band
-PRODUCT_PRODUCT_PROPERTIES += \
-    bluetooth.hfp.swb.supported=true
-
-# Bluetooth LE Audio
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.bluetooth.leaudio_switcher.supported=true \
-    bluetooth.profile.bap.unicast.client.enabled=true \
-    bluetooth.profile.csip.set_coordinator.enabled=true \
-    bluetooth.profile.hap.client.enabled=true \
-    bluetooth.profile.mcp.server.enabled=true \
-    bluetooth.profile.ccp.server.enabled=true \
-    bluetooth.profile.vcp.controller.enabled=true
-
-# Bluetooth LE Audio enable hardware offloading
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.bluetooth.leaudio_offload.supported=true \
-    persist.bluetooth.leaudio_offload.disabled=false
-
-# LE Audio Lunch Config for Phase 1 (LE audio toggle hidden by default)
-PRODUCT_PRODUCT_PROPERTIES += \
-    persist.bluetooth.leaudio.toggle_visible=true
-
-# LE Audio use classic connection by default
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.bluetooth.leaudio.le_audio_connection_by_default=true
-
-# Bluetooth LE Audio CIS handover to SCO
-# Set the property only for the controller couldn't support CIS/SCO simultaneously. More detailed in b/242908683.
-PRODUCT_PRODUCT_PROPERTIES += \
-    persist.bluetooth.leaudio.notify.idle.during.call=true
-
-# Bluetooth LE Audio enable dual mic SWB call
-PRODUCT_PRODUCT_PROPERTIES += \
-    bluetooth.leaudio.dual_bidirection_swb.supported=true
-
-# LE Audio Unicast Allowlist
-PRODUCT_PRODUCT_PROPERTIES += \
-    persist.bluetooth.leaudio.allow_list=SM-R510,WF-1000XM5,SM-R630
-
-# Support LE & Classic concurrent encryption (b/330704060)
-PRODUCT_PRODUCT_PROPERTIES += \
-    bluetooth.ble.allow_enc_with_bredr=true
-
-# Enable one-handed mode
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.support_one_handed_mode=true
-
-# Override BQR mask to enable LE Audio Choppy report, remove BTRT logging
-PRODUCT_PRODUCT_PROPERTIES += \
-    persist.bluetooth.bqr.event_mask=295006 \
-    persist.bluetooth.bqr.vnd_quality_mask=16 \
-    persist.bluetooth.bqr.vnd_trace_mask=0 \
-    persist.bluetooth.vendor.btsnoop=false
-
 # Settings Overlay
 PRODUCT_PACKAGES += \
     SettingsAkitaOverlay
@@ -122,11 +59,6 @@ PRODUCT_PACKAGES += \
 # WiFi Overlay
 PRODUCT_PACKAGES += \
 	WifiOverlay2024Mid
-
-# Keyboard height ratio and bottom padding in dp for portrait mode
-PRODUCT_PRODUCT_PROPERTIES += \
-          ro.com.google.ime.kb_pad_port_b=4.19 \
-          ro.com.google.ime.height_ratio=1.1
 
 # Window Extensions
 $(call inherit-product, $(SRC_TARGET_DIR)/product/window_extensions.mk)
@@ -137,15 +69,6 @@ PRODUCT_SYSTEM_PROPERTIES += \
 
 PRODUCT_NO_BIONIC_PAGE_SIZE_MACRO := true
 PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := true
-
-# Bluetooth device id
-# Akita: 0x410F
-PRODUCT_PRODUCT_PROPERTIES += \
-    bluetooth.device_id.product_id=16655
-
-# Set support for LEA multicodec
-PRODUCT_PRODUCT_PROPERTIES += \
-    bluetooth.core.le_audio.codec_extension_aidl.enabled=true
 
 # ANGLE - Almost Native Graphics Layer Engine
 PRODUCT_PACKAGES += \
@@ -173,6 +96,7 @@ PRODUCT_PACKAGES += \
     PixelDisplayServiceOverlayAkita
 
 # Properties
+TARGET_PRODUCT_PROP += $(DEVICE_PATH)/$(DEVICE_CODENAME)/product.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/$(DEVICE_CODENAME)/vendor.prop
 
 # Sensors
