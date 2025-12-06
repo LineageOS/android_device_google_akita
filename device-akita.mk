@@ -32,36 +32,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/google/akita/recovery/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.akita.rc
 
-# Display
-PRODUCT_VENDOR_PROPERTIES += \
-    vendor.primarydisplay.op.hs_hz=120 \
-    vendor.primarydisplay.op.ns_hz=60 \
-    vendor.primarydisplay.op.peak_refresh_rate=60
-
-# lhbm peak brightness delay: decided by kernel
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.primarydisplay.lhbm.frames_to_reach_peak_brightness=0
-
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.vendor.camera.adjust_backend_min_freq_for_1p_front_video_1080p_30fps=1 \
-	persist.vendor.camera.adjust_backend_min_freq_for_video_120fps=1 \
-	persist.vendor.camera.adjust_cam_uclamp_min_for_1p_rear_video_60fps=1 \
-	persist.vendor.camera.extended_launch_boost=1 \
-	persist.vendor.camera.optimized_tnr_freq=1 \
-	vendor.camera.debug.enable_software_post_sharpen_node=false \
-	vendor.camera.allow_sensor_binning_aspect_ratio_to_override_itp_output=false \
-	vendor.camera.debug.enable_blending_node=false
-
-# Enable front camera always binning for 720P or smaller resolution
-PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.camera.front_720P_always_binning=true
-
-# Enable camera exif model/make reporting
-PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.camera.exif_reveal_make_model=true
-
-# Media Performance Class 13
-PRODUCT_PROPERTY_OVERRIDES += ro.odm.build.media_performance_class=33
-
 # NFC
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
@@ -82,20 +52,9 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.ese.xml \
 	frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml
 
-# Bluetooth HAL
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.bluetooth.a2dp_offload.supported=true \
-    persist.bluetooth.a2dp_offload.disabled=false \
-    persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
-
 # POF
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.bluetooth.finder.supported=true
-
-# DCK properties based on target
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.gms.dck.eligible_wcc=2 \
-    ro.gms.dck.se_capability=1
 
 # Bluetooth AAC VBR
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -160,14 +119,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.server.automatic_turn_on=true
 
-# HdMic Audio
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.app.audio.gsenet.version=1
-
-# Audio CCA property
-PRODUCT_PROPERTY_OVERRIDES += \
-	persist.vendor.audio.cca.enabled=false
-
 # Settings Overlay
 PRODUCT_PACKAGES += \
     SettingsAkitaOverlay
@@ -176,64 +127,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	WifiOverlay2024Mid
 
-# Set zram size
-PRODUCT_VENDOR_PROPERTIES += \
-	vendor.zram.size=50p \
-	persist.device_config.configuration.disable_rescue_party=true
-
-# Increase thread priority for nodes stop
-PRODUCT_VENDOR_PROPERTIES += \
-	persist.vendor.camera.increase_thread_priority_nodes_stop=true
-
-# Display
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += vendor.display.lbe.supported=1
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.surface_flinger.set_idle_timer_ms=1500
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.vendor.primarydisplay.google-ak3b.temperature_path=/dev/thermal/tz-by-name/display_therm/temp
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.vendor.display.read_temp_interval=30
-
-PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.udfps.als_feed_forward_supported=true \
-    persist.vendor.udfps.fps_touch_handler_supported=false \
-    persist.vendor.udfps.lhbm_controlled_in_hal_supported=true
-
-# Fingerprint exposure compensation
-PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.udfps.auto_exposure_compensation_supported=true
-
-# OIS with system imu
-PRODUCT_VENDOR_PROPERTIES += \
-    persist.vendor.camera.ois_with_system_imu=true
-
-# Vibrator HAL
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.vibrator.hal.f0.comp.enabled=1 \
-    ro.vendor.vibrator.hal.redc.comp.enabled=0 \
-	persist.vendor.vibrator.hal.context.enable=false \
-	persist.vendor.vibrator.hal.context.scale=40 \
-	persist.vendor.vibrator.hal.context.fade=true \
-	persist.vendor.vibrator.hal.context.cooldowntime=1600 \
-	persist.vendor.vibrator.hal.context.settlingtime=5000
-
-# Override Output Distortion Gain
-PRODUCT_VENDOR_PROPERTIES += \
-    vendor.audio.hapticgenerator.distortion.output.gain=0.29
-
-# Increment the SVN for any official public releases
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.vendor.build.svn=44
-
-# Set device family property for SMR
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.device_family=HK3SB3AK3
-
 # Keyboard height ratio and bottom padding in dp for portrait mode
 PRODUCT_PRODUCT_PROPERTIES += \
           ro.com.google.ime.kb_pad_port_b=4.19 \
           ro.com.google.ime.height_ratio=1.1
-
-# Enable DeviceAsWebcam support
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.usb.uvc.enabled=true
 
 # Window Extensions
 $(call inherit-product, $(SRC_TARGET_DIR)/product/window_extensions.mk)
@@ -253,11 +150,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Set support for LEA multicodec
 PRODUCT_PRODUCT_PROPERTIES += \
     bluetooth.core.le_audio.codec_extension_aidl.enabled=true
-
-# Enable APF by default
-PRODUCT_VENDOR_PROPERTIES += \
-    vendor.powerhal.apf_disabled=false \
-    vendor.powerhal.apf_enabled=true
 
 # ANGLE - Almost Native Graphics Layer Engine
 PRODUCT_PACKAGES += \
