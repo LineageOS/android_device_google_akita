@@ -11,10 +11,6 @@ TARGET_SCREEN_DENSITY := 420
 
 include device/google/zuma/BoardConfig-common.mk
 
-# Kernel
-BOARD_KERNEL_CMDLINE += swiotlb=noforce
-BOARD_KERNEL_CMDLINE += disable_dma32=on
-
 # Kernel modules
 BOARD_BOOTCONFIG += androidboot.load_modules_parallel=true
 
