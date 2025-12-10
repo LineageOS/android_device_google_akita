@@ -1,6 +1,8 @@
 type gnssd, domain;
 type gnssd_exec, exec_type, file_type, vendor_file_type;
 
+net_domain(gnssd)
+
 binder_call(gnssd, hwservicemanager)
 binder_call(gnssd, rild)
 
@@ -8,8 +10,6 @@ get_prop(gnssd, bootanim_system_prop)
 get_prop(gnssd, vendor_rild_prop)
 
 init_daemon_domain(gnssd)
-
-net_domain(gnssd)
 
 set_prop(gnssd, vendor_gps_prop)
 
