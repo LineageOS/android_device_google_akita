@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a4f197_0b9b2e84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-02-04T04:31:20Z",
+      "side": 1,
+      "message": "Note: Only sepolicy changes this month were for the migration of device_family property (moved vendor -\u003e product, uses automatic labeling now, and old label is nowhere to be found in working tree) and emergency_build_os property (not set on LineageOS).\n\nSo no sepolicy change is needed this month.",
+      "revId": "427c87518c25460b165955f284ecaff7a2714176",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
