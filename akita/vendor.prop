@@ -25,9 +25,6 @@ vendor.camera.debug.enable_software_post_sharpen_node=false
 ro.gms.dck.eligible_wcc=2
 ro.gms.dck.se_capability=1
 
-# Device family
-ro.build.device_family=HK3SB3AK3
-
 # Display
 ro.surface_flinger.set_idle_timer_ms=1500
 ro.vendor.display.read_temp_interval=30
