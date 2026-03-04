@@ -7,6 +7,9 @@
     <!-- Padding for the lock icon on the keyguard. In pixels - should not scale with display size. -->
     <dimen name="lock_icon_padding">50px</dimen>
 
+    <!-- Margin on the left side of the carrier text on Keyguard -->
+    <dimen name="keyguard_carrier_text_margin">70px</dimen>
+
     <!-- The maximum offset for the under-display fingerprint sensor (UDFPS) icon in either
          direction that elements are moved to prevent burn-in on AOD-->
     <dimen name="udfps_burn_in_offset_x">6px</dimen>
