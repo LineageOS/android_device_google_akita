@@ -14,9 +14,6 @@ ifneq ($(TARGET_BOOTS_16K),true)
 PRODUCT_16K_DEVELOPER_OPTION := true
 endif
 
-DEVICE_PACKAGE_OVERLAYS += device/google/akita/akita/overlay
-DEVICE_PACKAGE_OVERLAYS += device/google/akita/overlay-lineage
-
 # Audio
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
@@ -41,8 +38,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml
 
 PRODUCT_PACKAGES += \
-	android.hardware.nfc-service.st \
-	NfcOverlayAkita
+	android.hardware.nfc-service.st
 
 # SecureElement
 PRODUCT_PACKAGES += \
@@ -51,14 +47,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.ese.xml \
 	frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml
-
-# Settings Overlay
-PRODUCT_PACKAGES += \
-    SettingsAkitaOverlay
-
-# WiFi Overlay
-PRODUCT_PACKAGES += \
-	WifiOverlay2024Mid
 
 # Window Extensions
 $(call inherit-product, $(SRC_TARGET_DIR)/product/window_extensions.mk)
@@ -88,8 +76,19 @@ PRODUCT_PACKAGES += \
     init.recovery.akita.touch.rc
 
 # Overlays
+DEVICE_PACKAGE_OVERLAYS += \
+    device/google/akita/overlay-lineage
+
 PRODUCT_PACKAGES += \
-    PixelDisplayServiceOverlayAkita
+    FrameworkResOverlayProductAkita \
+    FrameworkResOverlayVendorAkita \
+    PixelDisplayServiceOverlayProductAkita \
+    PixelNfcOverlayAkita \
+    SafetyRegulatoryInfoOverlayProductAkita \
+    SettingsAkitaOverlay \
+    SettingsGoogleAkitaOverlay \
+    ShannonImsOverlayProductAkita \
+    SystemUIGoogleOverlayVendorAkita
 
 # Properties
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/$(DEVICE_CODENAME)/product.prop
