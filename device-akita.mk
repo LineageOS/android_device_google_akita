@@ -5,6 +5,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Kernel
 TARGET_LINUX_KERNEL_VERSION := 6.1
 TARGET_KERNEL_DEVICE := akita
 TARGET_KERNEL_DIR := device/google/$(TARGET_KERNEL_DEVICE)-kernels/$(TARGET_LINUX_KERNEL_VERSION)
@@ -14,66 +15,15 @@ ifneq ($(TARGET_BOOTS_16K),true)
 PRODUCT_16K_DEVELOPER_OPTION := true
 endif
 
-# Audio
-PRODUCT_COPY_FILES += \
-    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
-
+# Inherit from zuma
 include device/google/zuma/device-shipping-common.mk
 
-# Bluetooth
-PRODUCT_PACKAGES += \
-    android.hardware.bluetooth.prebuilt.xml \
-    android.hardware.bluetooth_le.prebuilt.xml
-
-# Recovery files
-PRODUCT_COPY_FILES += \
-    device/google/akita/recovery/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.akita.rc
-
-# NFC
-PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
-	frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
-	frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
-	frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml \
-	frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml
-
-PRODUCT_PACKAGES += \
-	android.hardware.nfc-service.st
-
-# SecureElement
-PRODUCT_PACKAGES += \
-	android.hardware.secure_element-service.thales
-
-PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.se.omapi.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.ese.xml \
-	frameworks/native/data/etc/android.hardware.se.omapi.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.se.omapi.uicc.xml
-
-# Window Extensions
-$(call inherit-product, $(SRC_TARGET_DIR)/product/window_extensions.mk)
-
-PRODUCT_NO_BIONIC_PAGE_SIZE_MACRO := true
+# Bionic
 PRODUCT_CHECK_PREBUILT_MAX_PAGE_SIZE := true
-
-# ANGLE - Almost Native Graphics Layer Engine
-PRODUCT_PACKAGES += \
-    ANGLE
-
-# EUICC
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.euicc.mep.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.euicc.mep.xml \
-    frameworks/native/data/etc/android.hardware.telephony.euicc.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/android.hardware.telephony.euicc.xml
 
 # Fingerprint
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
-
-# GPS
-PRODUCT_PACKAGES += \
-    android.hardware.location.gps.prebuilt.xml
-
-# Init
-PRODUCT_PACKAGES += \
-    init.recovery.akita.touch.rc
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -94,9 +44,12 @@ PRODUCT_PACKAGES += \
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/$(DEVICE_CODENAME)/product.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/$(DEVICE_CODENAME)/vendor.prop
 
-# Sensors
+# Recovery
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/recovery/init.recovery.device.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.akita.rc
+
 PRODUCT_PACKAGES += \
-    sensors.dynamic_sensor_hal
+    init.recovery.akita.touch.rc
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -105,3 +58,6 @@ PRODUCT_SOONG_NAMESPACES += \
 # VINTF
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE += \
     $(DEVICE_PATH)/vintf/device_framework_matrix_product.xml
+
+# Window extensions
+$(call inherit-product, $(SRC_TARGET_DIR)/product/window_extensions.mk)
