@@ -38,10 +38,14 @@ vendor.powerhal.apf_disabled=false
 vendor.powerhal.apf_enabled=true
 
 # SVN
-ro.vendor.build.svn=49
+ro.vendor.build.svn=57
 
 # Vibrator
 persist.vendor.vibrator.hal.context.scale=40
 ro.vendor.vibrator.hal.f0.comp.enabled=1
 ro.vendor.vibrator.hal.redc.comp.enabled=0
 vendor.audio.hapticgenerator.distortion.output.gain=0.29
+
+# Wi-Fi
+ro.vendor.wifi.manufacturer=broadcom
+ro.vendor.wifi.model=bcm4383

@@ -1,5 +1,6 @@
 # Bluetooth
 bluetooth.device_id.product_id=16655
+bluetooth.profile.gmap.enabled=true
 persist.bluetooth.leaudio.toggle_visible=true
 ro.bluetooth.leaudio.le_audio_connection_by_default=true
 
