@@ -8,6 +8,12 @@ $(call inherit-product, device/google/akita/device-akita.mk)
 
 PRODUCT_NAME := aosp_akita
 PRODUCT_DEVICE := akita
-PRODUCT_MODEL := AOSP on akita
-PRODUCT_BRAND := Android
+PRODUCT_MODEL := Pixel 8a
+PRODUCT_BRAND := google
 PRODUCT_MANUFACTURER := Google
+
+PRODUCT_NAME_FOR_ATTESTATION := akita
+PRODUCT_DEVICE_FOR_ATTESTATION := akita
+PRODUCT_MODEL_FOR_ATTESTATION := Pixel 8a
+PRODUCT_BRAND_FOR_ATTESTATION := google
+PRODUCT_MANUFACTURER_FOR_ATTESTATION := Google
