@@ -86,6 +86,10 @@ module = ExtractUtilsModule(
 
 
 def fix_vendor_file_list(file_list: FileList):
+    file_list.get_file('vendor/etc/vintf/manifest/manifest.xml').set_dst(
+        'vendor/etc/vintf/manifest/manifest_mapper_framework.xml'
+    )
+
     module_suffix_file_paths = [
         'vendor/lib64/com.google.edgetpu_app_service-V6-ndk.so',
         'vendor/lib64/com.google.edgetpu_vendor_service-V2-ndk.so',
