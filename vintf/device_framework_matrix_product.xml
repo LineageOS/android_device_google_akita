@@ -13,6 +13,13 @@
         </interface>
     </hal>
     <hal format="aidl">
+        <name>com.google.android.moseyservice</name>
+        <interface>
+            <name>IMoseyService</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="aidl">
         <name>vendor.google.aam</name>
         <version>1-3</version>
         <interface>
