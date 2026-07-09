@@ -38,7 +38,7 @@ vendor.powerhal.apf_disabled=false
 vendor.powerhal.apf_enabled=true
 
 # SVN
-ro.vendor.build.svn=57
+ro.vendor.build.svn=58
 
 # Vibrator
 persist.vendor.vibrator.hal.context.scale=40
