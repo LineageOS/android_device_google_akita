@@ -29,6 +29,7 @@ namespace_imports = [
     'hardware/google/av',
     'hardware/google/interfaces',
     'hardware/google/pixel',
+    'hardware/google/pixel/pixelstats',
 ]
 
 
