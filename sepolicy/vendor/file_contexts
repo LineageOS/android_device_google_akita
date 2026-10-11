@@ -7,5 +7,4 @@
 /vendor/bin/hw/sctd u:object_r:sctd_exec:s0
 /vendor/bin/hw/spad u:object_r:spad_exec:s0
 /vendor/bin/hw/swcnd u:object_r:swcnd_exec:s0
-/vendor/bin/hw/vendor.google.aam-service u:object_r:hal_aam_exec:s0
 /vendor/bin/hw/vendor\.google\.radio_ext-service u:object_r:hal_radio_ext_exec:s0
