@@ -25,4 +25,11 @@
       DisplayCutout path will be rendered
        -->
     <string name="config_frontBuiltInDisplayCutoutProtection" translatable="false">m 586.22,68.71 a 46.72,46.22 0 0 0 -93.43,0 46.22,46.22 0 0 0 93.43,0 z</string>
+
+    <!-- The properties of the face auth front camera for outer display in pixels -->
+    <integer-array name="config_face_auth_props">
+        <item>540</item>
+        <item>68</item>
+        <item>34</item>
+    </integer-array>
 </resources>
